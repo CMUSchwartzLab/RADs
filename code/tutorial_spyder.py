@@ -69,11 +69,10 @@ print('Finished the deconvolution in %0.2f s' % (END_TIME-START_TIME))
 #%%
 
 # 4. plot the result
-result_path = '../simulated_data'
 b = 0.0
 s = 0.0
 n = 1
 lam = 0.1
 
-sim_data, result = load_result(result_path, b, s, n, lam)
+sim_data, result = utils.load_result(b, s, n, lam)
 utils.eval_plot(sim_data, result)
