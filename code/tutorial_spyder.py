@@ -54,7 +54,7 @@ mu_init = sRAD._linear_reg_mu(C1_init, S)
 
 #%%
 # 3. solve the deconvolution and save the result
-# this may take a while, take a cup of coffee...
+# this may take a while, get a cup of coffee...
 START_TIME = time.time()
 inferC, inferF, infermu, list_err = sRAD._rna_coordescent(B, C1_init, C2_init, F_init, S, mu_init, lam)
 
