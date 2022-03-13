@@ -47,12 +47,16 @@ Instructions in this `README` assume a GNU Linux command line or a Macintosh ter
   ```conda install -c conda-forge cvxopt``` or ```pip install cvxopt```
 4. Run the solver: The main code to solve the deconvolution problem is contained in `run_exp_v3.py`, we use this file as the main function to test our model on the simulated data, there are mainly four arguments for the function: `b_noise, s_nosie, sample_nums, lambda`. While `b_noise` and `s_noise` are two parameter to simulate the noise in the data at two different levels (please refer to Section 2.3 for details), `sample_nums` and `lambda` refer to number of bulk sample and regularization term for `||C_1-\mu S||_{Fr}^2` in the objective, respectively. Please note that there is a pre-defined parameter called `date` around `Line 18`, which we used to mark different test for the data, users can use whatever value for `date`, but just put the data into a folder has the same value as `date` under `RADs\simulated_data`. 
 A sample command to run the code would be:
-  ```run_exp_v3.py 0.0 0.0 1 0.1```, 
-  where `0.0 0.0` mean the level of `b_noise` and `s_noise`, `1` means the number of bulk sample, `0.1` means the value of `lambda`.
-  When the problem was solved, a single `pickle` file would be generated and saved in `results` directory:
-  ```RADs\results\result_0.0_0.0_1_0.1.pickle```.
-  This `pickle` file has a dictinary-like structure and all the inferred results such as inferred C, inferred F and inferred mu will be stored, as well as the ground truth from simulated data. Please note, if `date` has been defined and used, the result path would be:
-  ```RADs\results\{date}\result_0.0_0.0_1_0.1.pickle```.
+    ```
+    run_exp_v3.py 0.0 0.0 1 0.1
+    ```
+    where `0.0 0.0` mean the level of `b_noise` and `s_noise`, `1` means the number of bulk sample, `0.1` means the value of `lambda`.
+    When the problem was solved, a single `pickle` file would be generated and saved in `results` directory:
+    ```
+    RADs\results\result_0.0_0.0_1_0.1.pickle
+    ```
+    This `pickle` file has a dictinary-like structure and all the inferred results such as inferred C, inferred F and inferred mu will be stored, as well as the ground truth from simulated data. Please note, if `date` has been defined and used, the result path would be:
+    ```RADs\results\{date}\result_0.0_0.0_1_0.1.pickle```.
 5. Test on real data: `run_exp_v3.py` is mainly for testing the performance of the model on simulated by varying different parameters. Once the optimal parameter (e.g., `lambda`) was determined for a dataset, we provide another code `testreal.py` for the real data. The command would be just as simple as:
     ```
     testreal.py /path/to/real_data
